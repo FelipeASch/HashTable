@@ -1,7 +1,7 @@
 public class HashFunction2 extends HashTable {
     @Override
     protected int hash(String key) {
-        int hash = 7;
+        int hash = 9;
         for (char c : key.toCharArray()) {
             hash = hash * 31 + c;
         }

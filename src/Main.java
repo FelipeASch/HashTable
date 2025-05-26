@@ -18,15 +18,12 @@ public class Main {
         HashTable table1 = new HashFunction1();
         HashTable table2 = new HashFunction2();
 
-        // Inserção - Tabela 1
         long start = System.nanoTime();
         for (String name : names) {
             table1.insert(name);
         }
         long end = System.nanoTime();
         table1.insertionTime = end - start;
-
-        // Inserção - Tabela 2
         start = System.nanoTime();
         for (String name : names) {
             table2.insert(name);
@@ -34,15 +31,13 @@ public class Main {
         end = System.nanoTime();
         table2.insertionTime = end - start;
 
-        // Busca - Tabela 1
+
         start = System.nanoTime();
         for (String name : names) {
             table1.search(name);
         }
         end = System.nanoTime();
         table1.searchTime = end - start;
-
-        // Busca - Tabela 2
         start = System.nanoTime();
         for (String name : names) {
             table2.search(name);
@@ -50,15 +45,15 @@ public class Main {
         end = System.nanoTime();
         table2.searchTime = end - start;
 
-        printReport("Tabela 1 - Função Hash Simples", table1);
-        printReport("Tabela 2 - Função Hash Multiplicativa", table2);
+        printReport("Hash de soma de caractéres simples:", table1);
+        printReport("Hash Multiplicativo:", table2);
     }
 
     private static void printReport(String title, HashTable table) {
         System.out.println("\n" + title);
         System.out.println("Colisões: " + table.getCollisionCount());
-        System.out.println("Tempo de inserção: " + table.getInsertionTime() + " ns");
-        System.out.println("Tempo de busca: " + table.getSearchTime() + " ns");
+        System.out.println("Tempo de inserção: " + String.format("%.3f", table.getInsertionTime() / 1_000_000.0) + " ms");
+        System.out.println("Tempo de busca: " + String.format("%.3f", table.getSearchTime() / 1_000_000.0) + "  ms");
         System.out.println("Distribuição:");
         int[] dist = table.getDistribution();
         for (int i = 0; i < dist.length; i++) {
