@@ -4,6 +4,7 @@ public class ArraiA<E> {
     private Object[] data;
     private int tamanho = 10;
     private int posLivre = 0;
+    private Node<E> primeiro;
 
     public ArraiA(){
         data = new Object[tamanho];
@@ -89,4 +90,36 @@ public class ArraiA<E> {
         data = novaArraiA;
         tamanho = novoTamanho;
     }
+    public boolean removeNode(E value) {
+        if (primeiro == null) return false;
+
+        if (primeiro.value.equals(value)) {
+            primeiro = primeiro.next;
+            return true;
+        }
+        Node<E> atual = primeiro;
+        while (atual.next != null) {
+            if (atual.next.value.equals(value)) {
+                atual.next = atual.next.next;
+                return true;
+            }
+            atual = atual.next;
+        }
+        return false;
+    }
+    public void clear() {
+        primeiro = null;
+    }
+    public int size() {
+        int count = 0;
+        Node<E> atual = primeiro;
+        while (atual != null) {
+            count++;
+            atual = atual.next;
+        }
+        return count;
+    }
+
+
 }
+
