@@ -4,7 +4,6 @@ public class ArraiA<E> {
     private Object[] data;
     private int tamanho = 10;
     private int posLivre = 0;
-    private Node<E> primeiro;
 
     public ArraiA(){
         data = new Object[tamanho];

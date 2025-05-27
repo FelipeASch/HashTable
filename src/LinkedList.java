@@ -1,6 +1,7 @@
 public class LinkedList<E> {
     private Node<E> topo;
     private Node<E> base;
+    private Node<E> primeiro;
 
     public LinkedList(){
         topo = null;
