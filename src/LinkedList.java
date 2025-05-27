@@ -51,4 +51,35 @@ public class LinkedList<E> {
         }
 
     }
+    public boolean removeNode(E value) {
+        if (primeiro == null) return false;
+
+        if (primeiro.value.equals(value)) {
+            primeiro = primeiro.next;
+            return true;
+        }
+        Node<E> atual = primeiro;
+        while (atual.next != null) {
+            if (atual.next.value.equals(value)) {
+                atual.next = atual.next.next;
+                return true;
+            }
+            atual = atual.next;
+        }
+        return false;
+    }
+    public void clear() {
+        primeiro = null;
+    }
+    public int size() {
+        int count = 0;
+        Node<E> atual = primeiro;
+        while (atual != null) {
+            count++;
+            atual = atual.next;
+        }
+        return count;
+    }
+
+
 }
